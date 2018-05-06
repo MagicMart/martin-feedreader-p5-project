@@ -33,9 +33,9 @@ $(function() {
          * and that the URL is not empty.
          */
         it('has URL and it is not empty', function() {
-            allFeeds.forEach(function(element, index, array) {
+            allFeeds.forEach(function(element, index) {
                 const url = allFeeds[index].url;
-                expect(url).not.toBe(undefined);
+                expect(url).toBeDefined();
                 expect(url).not.toBe('');
 
             });
@@ -47,7 +47,7 @@ $(function() {
          * and that the name is not empty.
          */
         it('has name and it is not empty', function() {
-            allFeeds.forEach(function(element, index, array) {
+            allFeeds.forEach(function(element, index) {
                 const name = allFeeds[index].name;
                 expect(name).not.toBe(undefined);
                 expect(name).not.toBe('');
@@ -70,7 +70,6 @@ $(function() {
 
         it('has menu element hidden by default', function() {
             const menu = document.body.getAttribute('class');
-            console.log(menu);
             expect(menu).toBe('menu-hidden');
         });
         /* TODO: Write a test that ensures the menu changes
@@ -113,12 +112,27 @@ $(function() {
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        let articleText;
+        console.log(articleText);
+        beforeEach(function(done) {
+            const anchor = document.querySelectorAll('a');
+            articleText = document.querySelector('.entry').textContent;
+            anchor[2].click(); // click on CSS tricks
+            setTimeout(function() {
+                done();
+            }, 3000);
 
+        });
+
+        it('should have new content when new feed is loaded', function(done) {
+            const articleText2 = document.querySelector('.entry').textContent; // Css Tricks entry
+            expect(articleText2).not.toEqual(articleText);
+            done();
+        });
     });
 
 }());
