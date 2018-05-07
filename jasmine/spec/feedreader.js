@@ -49,7 +49,7 @@ $(function() {
         it('has name and it is not empty', function() {
             allFeeds.forEach(function(element, index) {
                 const name = allFeeds[index].name;
-                expect(name).not.toBe(undefined);
+                expect(name).toBeDefined();
                 expect(name).not.toBe('');
 
             });
@@ -98,10 +98,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done) {
-            setTimeout(function() {
-                done();
-            }, 3000);
-
+            loadFeed(0, done);
         });
 
         it('should have at least one .entry element', function(done) {
@@ -119,12 +116,10 @@ $(function() {
         let articleText;
         console.log(articleText);
         beforeEach(function(done) {
+            loadFeed(2);
             const anchor = document.querySelectorAll('a');
             articleText = document.querySelector('.entry').textContent;
-            anchor[2].click(); // click on CSS tricks
-            setTimeout(function() {
-                done();
-            }, 3000);
+            loadFeed(1, done);
 
         });
 
