@@ -114,17 +114,19 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
         let articleText;
-        console.log(articleText);
+        // console.log(articleText);
         beforeEach(function(done) {
             loadFeed(2);
             const anchor = document.querySelectorAll('a');
             articleText = document.querySelector('.entry').textContent;
+            console.log(articleText);
             loadFeed(1, done);
 
         });
 
         it('should have new content when new feed is loaded', function(done) {
             const articleText2 = document.querySelector('.entry').textContent; // Css Tricks entry
+            console.log(articleText2);
             expect(articleText2).not.toEqual(articleText);
             done();
         });
