@@ -1,4 +1,6 @@
-**This is project 5 for the Google Udacity Fend Nanodegree.**
+# This is project 5 for the Google Udacity Fend Nanodegree
+
+## Description
 
 The student must write a series of tests that run against the code found in the folders named *js, css, fonts* and the file *index.html*. *This code is for a web-based application that reads RSS feeds.*
 
@@ -6,7 +8,10 @@ The tests use the **Jasmine 2.1.2** library. The code relating to Jasmine is con
 
 As well as the Jasmine library, the code depends upon **Jquery** and the **Handlebars templating library**.
 
-To see the code in action download it and open **index.html** in your browser.
+Here is the [project rubric](https://review.udacity.com/#!/rubrics/18/view)
+
+To see the code in action, download it and open **index.html** in your browser.
+
 
 ## The Tests
 
