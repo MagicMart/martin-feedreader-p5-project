@@ -22,6 +22,8 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
+         // allFeeds is an array of objects that contains the name
+         // and URL for the side menu
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
@@ -69,6 +71,8 @@ $(function() {
          */
 
         it('has menu element hidden by default', function() {
+            // the HTML body element contains the class that toggles
+            // between 'menu-hidden' and ''
             const menu = document.body.getAttribute('class');
             expect(menu).toBe('menu-hidden');
         });
@@ -78,11 +82,16 @@ $(function() {
          * clicked and does it hide when clicked again.
          */
         it('toggles the menu display when clicked', function() {
+            // '.menu-icon-link' is the class of the menu
             const menu = document.querySelector('.menu-icon-link');
             const body = document.querySelector('body');
+            // the body has a class of 'menu-hidden' by default
             menu.click();
+            // when the menu icon is clicked, the menu of links should appear
             expect(body.className).toBe('');
+            // click the menu icon again
             menu.click();
+            // the menu of links should now be hidden
             expect(body.className).toBe('menu-hidden');
         });
 
@@ -98,10 +107,12 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done) {
+            // Make sure test does not run until the loadFeed function has completed
             loadFeed(0, done);
         });
 
         it('should have at least one .entry element', function(done) {
+            // Check that there is a element with class of entry
             const article = document.querySelector('.entry');
             expect(article).not.toBe(null);
             done();
@@ -115,13 +126,15 @@ $(function() {
          */
         let articleText;
         beforeEach(function(done) {
-            articleText = document.querySelector('.entry').textContent;
+            // Get the current '.entry' for later comparison
+            articleText = document.querySelector('.entry').textContent; // Udacity Blog entry
             loadFeed(1, done);
 
         });
 
         it('should have new content when new feed is loaded', function(done) {
             const articleText2 = document.querySelector('.entry').textContent; // Css Tricks entry
+            // The two texts should not be the same
             expect(articleText2).not.toEqual(articleText);
             done();
         });
