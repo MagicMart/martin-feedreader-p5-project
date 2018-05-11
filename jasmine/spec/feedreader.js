@@ -120,13 +120,17 @@ $(function() {
 
         let articleText;
         beforeEach(function(done) {
+            loadFeed(3, done); // Linear Digressions
             // Get the current '.entry' for later comparison
             articleText = document.querySelector('.entry').textContent; // Udacity Blog entry
-            loadFeed(1, done);
         });
 
+        beforeEach(function(done) {
+            loadFeed(1, done); // CSS Tricks
+        })
+
         it('should have new content when new feed is loaded', function(done) {
-            const articleText2 = document.querySelector('.entry').textContent; // Css Tricks entry
+            const articleText2 = document.querySelector('.entry').textContent;
             // The two texts should not be the same
             expect(articleText2).not.toEqual(articleText);
             done();
