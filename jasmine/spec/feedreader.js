@@ -103,9 +103,8 @@ $(function() {
         });
 
         it('should have at least one .entry element', function(done) {
-            // Check that there is a element with class of entry
-            const article = document.querySelector('.entry');
-            expect(article).not.toBe(null);
+            // Check that there is at least one element with class of entry within .feed
+            expect('.feed .entry').not.toBe(null);
             done();
         });
     });
@@ -120,13 +119,13 @@ $(function() {
 
         let articleText;
         beforeEach(function(done) {
-            // Get the current '.entry' for later comparison
-            articleText = document.querySelector('.entry').textContent; // Udacity Blog entry
+            // Get the current '.feed' for later comparison
+            articleText = document.querySelector('.feed').textContent; // Udacity Blog entry
             loadFeed(1, done); // CSS Tricks
         });
 
         it('should have new content when new feed is loaded', function(done) {
-            const articleText2 = document.querySelector('.entry').textContent;
+            const articleText2 = document.querySelector('.feed').textContent;
             // The two texts should not be the same
             expect(articleText2).not.toEqual(articleText);
             done();
