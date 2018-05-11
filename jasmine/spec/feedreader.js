@@ -39,7 +39,6 @@ $(function() {
             });
         });
 
-
         /* A test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
@@ -65,11 +64,13 @@ $(function() {
             // between 'menu-hidden' and ''
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
+
         /* A test that ensures the menu changes
          * visibility when the menu icon is clicked. This test
          * should have two expectations: does the menu display when
          * clicked and does it hide when clicked again.
          */
+
         it('toggles the menu display when clicked', function() {
             // '.menu-icon-link' is the class of the menu icon
             const menu = document.querySelector('.menu-icon-link');
@@ -88,12 +89,14 @@ $(function() {
 
     /* A test suite named "Initial Entries" */
     describe('Initial Entries', function() {
+
         /* A test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * loadFeed() is asynchronous so this test requires
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+
         beforeEach(function(done) {
             // Make sure test does not run until the loadFeed function has completed
             loadFeed(0, done);
@@ -106,18 +109,20 @@ $(function() {
             done();
         });
     });
+
     /* A test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
+
         /* A test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * loadFeed() is asynchronous.
          */
+
         let articleText;
         beforeEach(function(done) {
             // Get the current '.entry' for later comparison
             articleText = document.querySelector('.entry').textContent; // Udacity Blog entry
             loadFeed(1, done);
-
         });
 
         it('should have new content when new feed is loaded', function(done) {
