@@ -104,7 +104,7 @@ $(function() {
 
         it('should have at least one .entry element', function(done) {
             // Check that there is at least one element with class of entry within .feed
-            expect('.feed .entry').not.toBe(null);
+            expect($('.feed .entry')).not.toBe(null);
             done();
         });
     });
