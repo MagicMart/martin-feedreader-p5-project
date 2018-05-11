@@ -68,8 +68,7 @@ $(function() {
         it('has menu element hidden by default', function() {
             // the HTML body element contains the class that toggles
             // between 'menu-hidden' and ''
-            const body = document.body;
-            expect(body.classList).toContain('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
         /* A test that ensures the menu changes
          * visibility when the menu icon is clicked. This test
@@ -79,17 +78,16 @@ $(function() {
         it('toggles the menu display when clicked', function() {
             // '.menu-icon-link' is the class of the menu icon
             const menu = document.querySelector('.menu-icon-link');
-            const body = document.body;
             // the body has a class of 'menu-hidden' by default
             menu.click();
             // when the menu icon is clicked, the menu of links should appear
             // because the class 'menu-hidden' has been removed from
             // the body element.
-            expect(body.classList).not.toContain('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).toBe(false);
             // click the menu icon again
             menu.click();
             // the menu of links should now be hidden
-            expect(body.classList).toContain('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
 
