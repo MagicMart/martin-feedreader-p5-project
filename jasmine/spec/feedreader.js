@@ -74,7 +74,7 @@ $(function() {
             // the HTML body element contains the class that toggles
             // between 'menu-hidden' and ''
             const menu = document.body.getAttribute('class');
-            expect(menu).toBe('menu-hidden');
+            expect(menu).toContain('menu-hidden');
         });
         /* TODO: Write a test that ensures the menu changes
          * visibility when the menu icon is clicked. This test
@@ -88,11 +88,11 @@ $(function() {
             // the body has a class of 'menu-hidden' by default
             menu.click();
             // when the menu icon is clicked, the menu of links should appear
-            expect(body.className).toBe('');
+            expect(body.classList).not.toContain('menu-hidden');
             // click the menu icon again
             menu.click();
             // the menu of links should now be hidden
-            expect(body.className).toBe('menu-hidden');
+            expect(body.classList).toContain('menu-hidden');
         });
 
 
