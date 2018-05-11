@@ -12,6 +12,8 @@ As well as the Jasmine library, the code depends upon **Jquery** and the **Handl
 
 Here is the [project rubric](https://review.udacity.com/#!/rubrics/18/view)
 
+## How to run
+
 To see the code in action, download it and open **index.html** in your browser.
 
 
