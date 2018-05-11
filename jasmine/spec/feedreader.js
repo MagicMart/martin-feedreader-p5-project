@@ -79,7 +79,7 @@ $(function() {
         it('toggles the menu display when clicked', function() {
             // '.menu-icon-link' is the class of the menu icon
             const menu = document.querySelector('.menu-icon-link');
-            const body = document.querySelector('body');
+            const body = document.body;
             // the body has a class of 'menu-hidden' by default
             menu.click();
             // when the menu icon is clicked, the menu of links should appear
