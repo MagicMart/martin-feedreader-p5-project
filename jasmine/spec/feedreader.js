@@ -36,7 +36,6 @@ $(function() {
                 const url = allFeeds[index].url;
                 expect(url).toBeDefined();
                 expect(url).not.toBe('');
-
             });
         });
 
@@ -50,13 +49,9 @@ $(function() {
                 const name = allFeeds[index].name;
                 expect(name).toBeDefined();
                 expect(name).not.toBe('');
-
             });
         });
-
-
     });
-
 
     /* A new test suite named "The menu" */
     describe('The menu', function() {
@@ -89,8 +84,6 @@ $(function() {
             // the menu of links should now be hidden
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
-
-
     });
 
     /* A test suite named "Initial Entries" */
