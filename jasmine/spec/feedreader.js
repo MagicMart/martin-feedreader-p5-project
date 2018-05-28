@@ -32,10 +32,9 @@ $(function() {
          * and that the URL is not empty.
          */
         it('has URL and it is not empty', function() {
-            allFeeds.forEach(function(element, index) {
-                const url = allFeeds[index].url;
-                expect(url).toBeDefined();
-                expect(url).not.toBe('');
+            allFeeds.forEach(function(element) {
+                expect(element.url).toBeDefined();
+                expect(element.url).not.toBe('');
             });
         });
 
@@ -44,10 +43,9 @@ $(function() {
          * and that the name is not empty.
          */
         it('has name and it is not empty', function() {
-            allFeeds.forEach(function(element, index) {
-                const name = allFeeds[index].name;
-                expect(name).toBeDefined();
-                expect(name).not.toBe('');
+            allFeeds.forEach(function(element) {
+                expect(element.name).toBeDefined();
+                expect(element.name).not.toBe('');
             });
         });
     });
@@ -118,14 +116,25 @@ $(function() {
          */
 
         let articleText;
+        let articleText2;
         beforeEach(function(done) {
-            // Get the current '.feed' for later comparison
-            articleText = document.querySelector('.feed').textContent; // Udacity Blog entry
-            loadFeed(1, done); // CSS Tricks
+            // clear the feed to make sure we're not relying on earlier tests
+            $('.feed').empty();
+            loadFeed(1, function(){
+                // Get the current '.feed' for later comparison
+               articleText = document.querySelector('.feed').innerText;
+            });
+            loadFeed(2, function(){
+                // Get the current '.feed' for later comparison
+               articleText2 = document.querySelector('.feed').innerText;
+               done();
+            });
         });
 
         it('should have new content when new feed is loaded', function(done) {
-            const articleText2 = document.querySelector('.feed').textContent;
+            // make sure there is content in .feed in both instances of calling loadFeed
+            expect(articleText).not.toEqual('');
+            expect(articleText2).not.toEqual('');
             // The two texts should not be the same
             expect(articleText2).not.toEqual(articleText);
             done();
